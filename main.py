@@ -27,10 +27,4 @@ def main():
             return
             #dosomething with gameData
 
-if __name__ == "__main__":
-    main()
-
-
-
-
 getGameInfo(getGameIds('5.11')[0])
