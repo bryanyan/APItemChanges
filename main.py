@@ -2,16 +2,17 @@ from api import RiotAPI
 import json
 from pprint import pprint
 
+API_KEY = "b428aebe-05e5-4353-b569-980bcbeaa394"
+
 def main():
+    patches = ['5.11', '5.14']
     winRates = {}
     itemRates = {}
-    gameID = [getGameIds('5.11'), getGameIds('5.14')]
+    gameID = [getGameIds(patches[0]), getGameIds(patches[1])]
     for patch in gameID:
         for game in gameID[patch]:
             gameData = getGameInfo(game)
             #dosomething with gameData
-
-
 
 
 if __name__ == "__main__":
@@ -24,7 +25,7 @@ def getGameIds(patch):
     return data
 
 def getGameInfo(id):
-    api = RiotAPI("b428aebe-05e5-4353-b569-980bcbeaa394", "na")
+    api = RiotAPI(API_KEY, "na")
     response = api.getMatch("match", id)
     pprint(response)
     return response
