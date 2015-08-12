@@ -24,8 +24,8 @@ def main():
     for patch in gameID:
         for game in patch:
             gameData = getGameInfo(game)
+            return
             #dosomething with gameData
-
 
 if __name__ == "__main__":
     main()
