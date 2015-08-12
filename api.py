@@ -7,16 +7,21 @@ class RiotAPI(object):
 		self.api_key = api_key
 		self.region = region
 
-	def _request(self, apiUrl, params={}):
+	def _request(self, api_url, params={}):
 		args = {"api_key": self.api_key}
 		for key, value in params.items():
 			if key not in args:
 				args[key] = value
 		response = requests.get(const.URL['base'].format(
-				proxy=self.region,region=self.region,url=apiUrl),params=args)
+				proxy=self.region,region=self.region,url=api_url),params=args)
 		return response.json()
 
-	def getSummoner(self, username, apiVersion):
-		apiUrl = const.URL['summoner'].format(
-				 version=const.API_VERSIONS[apiVersion],username=username)
-		return self._request(apiUrl)
+	def getSummoner(self, api_version, username):
+		api_url = const.URL['summoner'].format(
+				 version=const.API_VERSIONS[api_version],username=username)
+		return self._request(api_url)
+
+	def getMatch(self, api_version, matchID):
+		api_url = const.URL['match'].format(
+				version=const.API_VERSIONS[api_version],matchId=matchID)
+		return self._request(api_url)

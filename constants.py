@@ -1,6 +1,8 @@
 URL = {
 	"base": 'https://{proxy}.api.pvp.net/api/lol/{region}/{url}',
+	"match": 'v{version}/match/{matchId}',
 	"summoner": 'v{version}/summoner/by-name/{username}'
+
 }
 
 API_VERSIONS = {
