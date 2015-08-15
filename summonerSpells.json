@@ -1,0 +1,50 @@
+{
+    "1": {
+        "name": "Cleanse",
+        "url": "http://ddragon.leagueoflegends.com/cdn/5.2.1/img/spell/SummonerBoost.png"
+    },
+    "2": {
+        "name": "Clairvoyance",
+        "url": "http://ddragon.leagueoflegends.com/cdn/5.2.1/img/spell/SummonerClairvoyance.png"
+    },
+    "3": {
+        "name": "Exhaust",
+        "url": "http://ddragon.leagueoflegends.com/cdn/5.2.1/img/spell/SummonerExhaust.png"
+    },
+    "4": {
+        "name": "Flash",
+        "url": "http://ddragon.leagueoflegends.com/cdn/5.2.1/img/spell/SummonerFlash.png"
+    },
+    "6": {
+        "name": "Ghost",
+        "url": "http://ddragon.leagueoflegends.com/cdn/5.2.1/img/spell/SummonerHaste.png"
+    },
+    "7": {
+        "name": "Heal",
+        "url": "http://ddragon.leagueoflegends.com/cdn/5.2.1/img/spell/SummonerHeal.png"
+    },
+    "10": {
+        "name": "Revive",
+        "url": "http://ddragon.leagueoflegends.com/cdn/5.2.1/img/spell/SummonerRevive.png"
+    },
+    "11": {
+        "name": "Smite",
+        "url": "http://ddragon.leagueoflegends.com/cdn/5.2.1/img/spell/SummonerSmite.png"
+    },
+    "12": {
+        "name": "Teleport",
+        "url": "http://ddragon.leagueoflegends.com/cdn/5.2.1/img/spell/SummonerTeleport.png"
+    },
+    "13": {
+        "name": "Clarity",
+        "url": "http://ddragon.leagueoflegends.com/cdn/5.2.1/img/spell/SummonerMana.png"
+    },
+    "14": {
+        "name": "Ignite",
+        "url": "http://ddragon.leagueoflegends.com/cdn/5.2.1/img/spell/SummonerDot.png"
+    },
+    "21": {
+        "name": "Barrier",
+        "url": "http://ddragon.leagueoflegends.com/cdn/5.2.1/img/spell/SummonerBarrier.png"
+    }
+}
