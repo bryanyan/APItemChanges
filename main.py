@@ -1,5 +1,6 @@
 from api import RiotAPI
-import json
+import io, json
+import time
 from pprint import pprint
 
 API_KEY = "b428aebe-05e5-4353-b569-980bcbeaa394"
@@ -20,11 +21,24 @@ def main():
     patches = ['5.11', '5.14']
     winRates = {}
     itemRates = {}
+    count = 0
     gameID = [getGameIds(patches[0]), getGameIds(patches[1])]
     for patch in gameID:
+        gameNumber = 0
         for game in patch:
+            gameNumber += 1
+            count += 1
             gameData = getGameInfo(game)
-            return
-            #dosomething with gameData
+            with io.open('gameNumber%d.json' %(gameNumber), 'w', encoding='utf-8') as fout:
+                fout.write(unicode(json.dumps(gameData, ensure_ascii=False)))
+            if (count == 10):
+                count = 0
+                time.sleep(11)
 
-getGameInfo(getGameIds('5.11')[0])
+if __name__ == "__main__":
+    main()
+
+#def hardcode():
+    #data = getGameInfo(getGameIds('5.11')[2])
+    #with io.open('gameNumber3.json', 'w', encoding='utf-8') as fout:
+        #fout.write(unicode(json.dumps(data, ensure_ascii=False)))
