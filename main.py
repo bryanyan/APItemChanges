@@ -23,17 +23,18 @@ def main():
     itemRates = {}
     count = 0
     gameID = [getGameIds(patches[0]), getGameIds(patches[1])]
+    
     for patch in gameID:
-        gameNumber = 0
-        for game in patch:
+        gameNumber = 360
+        for game in patch[359:]:
             gameNumber += 1
             count += 1
             gameData = getGameInfo(game)
             with io.open('gameNumber%d.json' %(gameNumber), 'w', encoding='utf-8') as fout:
                 fout.write(unicode(json.dumps(gameData, ensure_ascii=False)))
-            if (count == 10):
+            if (count == 8):
                 count = 0
-                time.sleep(11)
+                time.sleep(10)
 
 if __name__ == "__main__":
     main()
