@@ -25,3 +25,8 @@ class RiotAPI(object):
 		api_url = const.URL['match'].format(
 				version=const.API_VERSIONS[api_version],matchId=matchID)
 		return self._request(api_url)
+
+	def getLeague(self, api_version, summonerIDs):
+		api_url = const.URL['league'].format(
+			version=const.API_VERSIONS[api_version], summonerIds=summonerIDs)
+		return self._request(api_url)
