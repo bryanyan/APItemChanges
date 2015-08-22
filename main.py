@@ -7,13 +7,13 @@ import copy
 API_KEY = "637897ec-2820-4790-bf2c-984f1e0bf98f"
 
 def getGameIds(patch):
-    with open('AP_ITEM_DATASET/' + patch + '/RANKED_SOLO/KR.json') as data_file:    
+    with open('AP_ITEM_DATASET/' + patch + '/RANKED_SOLO/EUW.json') as data_file:    
         data = json.load(data_file)
     # pprint(data)
     return data
 
 def getGameInfo(id):
-    api = RiotAPI(API_KEY, "kr")
+    api = RiotAPI(API_KEY, "euw")
     response = api.getMatch("match", id)
     #pprint(response)
     return response
@@ -26,19 +26,19 @@ def getLeagueInfo(id):
 def main():
     patches = ['5.11', '5.14']
     count = 0
-    gameID = [getGameIds(patches[0])]
+    gameID = [getGameIds(patches[1])]
     
     for patch in gameID:
         gameNumber = 0
         for game in patch:
             gameNumber += 1
             count += 1
-            if (count == 2500):
+            if (count == 2800):
                 count = 0
                 time.sleep(10)
             try:
                 gameData = getGameInfo(game)
-                with io.open('KRgameNumber%d.json' %(gameNumber), 'w', encoding='utf-8') as fout:
+                with io.open('EUWgameNumber%d.json' %(gameNumber), 'w', encoding='utf-8') as fout:
                     fout.write(unicode(json.dumps(gameData, ensure_ascii=False)))
             except:
                 continue
@@ -92,8 +92,8 @@ def parse():
 
 
 
-#if __name__ == "__main__":
-    #main()
+if __name__ == "__main__":
+    main()
 
 #def hardcode():
     #data = getGameInfo(getGameIds('5.11')[2])
