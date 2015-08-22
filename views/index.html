@@ -2,7 +2,69 @@
 <html>
     <head>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <link href="js/nvd3/nv.d3.css" rel="stylesheet"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.2/d3.min.js" charset="utf-8"></script>
+        <script src="js/nvd3/nv.d3.min.js"></script>
+        <title>API-tems</title>
     </head>
+    <ul>
+		<li><a href="default.asp">Home</a></li>
+		<li><a href="news.asp">News</a></li>
+		<li><a href="contact.asp">Contact</a></li>
+		<li><a href="about.asp">About</a></li>
+	</ul>
+<style>
+    body {
+	    background-image: url(".gif");
+	    background-color: #cccccc;
+	}
+	ul {
+	    list-style-type: none;
+	    margin: 0;
+	    padding: 0;
+	}
+	li {
+		display: inline;
+	}
+</style>
     <body>
+    	<div id="newgraph1"><svg></svg></div>
     </body>
+
+    <script>
+	var lineGraph = function(id, data) {
+	    nv.addGraph(function() {
+	        console.log(id);
+	        chart = nv.models.lineChart()
+	                .useInteractiveGuideline(true)
+	                .showYAxis(true)
+	                .showXAxis(true);
+	        chart.xAxis
+	            .axisLabel("Time")
+	            .tickValues([0,1,2,3,4,5,6,7,8,9]);
+	        chart.yAxis
+	            .axisLabel("Distance")
+	            .axisLabelDistance(40);
+	        d3.select(id)
+	            .datum(data)
+	            .call(chart);
+	        nv.utils.windowResize(function() { 
+	            chart.update();
+	            //chart.height(window.innerHeight);
+	        });
+	        return chart;
+	    });
+	};
+
+	function createLineData() {
+	    var data = [], i;
+	    for (i = 0; i < 10; i++) {
+	        data.push({x:i, y:i});
+	    }
+	    // document.write(data);
+	    return [{values: data, key: "linegraph"}];
+	}
+
+	lineGraph('#newgraph1 svg', createLineData());
+    </script>
 </html>
