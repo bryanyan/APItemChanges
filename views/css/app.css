@@ -1,0 +1,119 @@
+body {
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizelegibility;
+    font-family: 'Open Sans';
+    font-size: 18px;
+}
+
+.container {
+    width: 75%;
+}
+
+a {
+    font-weight: 600;
+    color: white;
+    text-decoration: none;
+}
+
+.link:hover {
+    color: black;
+}
+
+#about {
+    margin-left: 10px;
+}
+
+a:hover{
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#bryan {
+    color: #990000;
+}
+
+#warren {
+    color: #FDB515;
+}
+
+h1 {
+    font-size: 40px;
+    font-weight: 600;
+}
+
+h2 {
+    margin-top: 0;
+    font-weight: 300;
+    text-transform: uppercase;
+    font-size: 24px;
+}
+
+nav {
+    padding-bottom: 100px;
+}
+
+
+.hero {
+    padding-top: 40px;
+    overflow: hidden;
+    min-height: 80vh;
+    color: white;
+}
+
+.hero::after {
+  content: "";
+  background: url(http://ddragon.leagueoflegends.com/cdn/img/champion/splash/Aatrox_0.jpg);
+  background-size: cover;
+  opacity: 0.75;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  z-index: -1;   
+}
+
+.form-control {
+    height: 50px;
+}
+
+input {
+    margin: 7px 0;
+    width: 100%;
+    line-height: 50px;
+    font-size: 16px;
+    height: 50px;
+}
+
+.btn {
+    margin: 7px 0;
+    width: 100%;
+    line-height: 50px;
+    font-size: 16px;
+    height: 50px;
+    padding: 0;
+    background-color: #191919;
+    cursor: pointer;
+    text-align: center;
+    font-weight: 600;
+    display: inline-block;
+    overflow: hidden;
+    color: #FFF;
+    text-transform: uppercase;
+}
+
+.btn:hover {
+    background-color: #43942F;
+    color: #FFF;
+}
+
+h4 {
+    font-size: 15px;
+}
+
+.footer {
+    background-color: #191919;
+    padding: 25px 0;
+    color: white;
+}
+
