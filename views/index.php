@@ -1,16 +1,22 @@
+<?php?>
+
 <!DOCTYPE html>
 <html>
     <head>
         <title>API-tems</title>
         <meta charset="utf-8">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+        <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
         <link rel="shortcut icon" href="http://ddragon.leagueoflegends.com/cdn/5.2.1/img/item/3089.png">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-        <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
         <script src="js/app.js"></script>
         <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600">
         <link rel="stylesheet" href="css/styles.css">
+        <link rel="stylesheet" href="js/nvd3/nv.d3.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.2/d3.min.js" charset="utf-8"> </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.0/js/materialize.min.js"> </script>
+        <script src="js/nvd3/nv.d3.min.js"></script>
     </head>
 
     <body>
@@ -28,25 +34,16 @@
                             <h1>API-tems</h1>
                             <h2>Pre and Post AP Item Change Statistics</h2>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-5 col-sm-7">
-							<input id="inputarea" type="text" size="30" onkeyup="showResult(this.value)" style="color:#000000;">
-							<div id="livesearch"></div>
-                        </div>
-                        <div class="col-md-3 col-sm-5">
-                            <a href="#" class="btn">Search</a>
-                        </div>
+                        <button onclick="createPanel()">Create PAnel!</button>
+                        <script>createPanel()</script>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="container">
-            <div class="placeholder">
-                <div class="row text-center">
-                    <div class="example"> Placeholder for statistics example page </div>
-                </div>
 
+
+        <div class="container">
+            <div class="col-md-3">
             </div>
         </div>
         <div class="footer">

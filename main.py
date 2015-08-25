@@ -127,6 +127,4 @@ def parse():
     #with io.open('gameNumber3.json', 'w', encoding='utf-8') as fout:
         #fout.write(unicode(json.dumps(data, ensure_ascii=False)))
 
-
 parse()
-
