@@ -6,6 +6,7 @@ $x=$xmlDoc->getElementsByTagName('link');
 
 //get the q parameter from URL
 $q=$_GET["q"];
+$c=$_GET["c"];
 
 //lookup all links from the xml file if length of q>0
 if (strlen($q)>0) {
@@ -20,14 +21,12 @@ if (strlen($q)>0) {
           break;
         }
         if ($hint=="") {
-          $hint="<a onclick=document.getElementById('inputarea').value='" . 
-          $y->item(0)->childNodes->item(0)->nodeValue . 
-          "'>" . 
+          $hint="<a onclick=selectRecommendation(".'this,'.$c.")". 
+          ">" . 
           $y->item(0)->childNodes->item(0)->nodeValue . "</a>";
         } else {
-          $hint=$hint . "<br /><a onclick=document.getElementById('inputarea').value='" . 
-          $y->item(0)->childNodes->item(0)->nodeValue . 
-          "' target='_blank'>" . 
+          $hint=$hint . "<br /><a onclick=selectRecommendation(".'this,'.$c.")" . 
+          ">" . 
           $y->item(0)->childNodes->item(0)->nodeValue . "</a>";
           $count += 1;
         }
