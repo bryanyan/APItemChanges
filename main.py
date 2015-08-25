@@ -4,6 +4,8 @@ import time
 from pprint import pprint
 import copy
 
+API_KEY = "637897ec-2820-4790-bf2c-984f1e0bf98f"
+
 def getGameIds(patch):
     with open('AP_ITEM_DATASET/' + patch + '/RANKED_SOLO/EUW.json') as data_file:    
         data = json.load(data_file)
@@ -97,18 +99,18 @@ def parse():
             if player['participantId'] == tDict[playerID][0]:
                 if tDict[playerID][1] == 'BRONZE':
                     tiers[0][str(player['championId'])]['pick'] += 1
-                if tDict[playerID][1] == 'SILVER': 
-                    tiers[1]
-                if tDict[playerID][1] == 'GOLD': 
-                    tiers[2]
-                if tDict[playerID][1] == 'PLATINUM': 
-                    tiers[3]
-                if tDict[playerID][1] == 'DIAMOND': 
-                    tiers[4]
-                if tDict[playerID][1] == 'MASTER': 
-                    tiers[5]
-                if tDict[playerID][1] == 'CHALLENGER': 
-                    tiers[6]
+                elif tDict[playerID][1] == 'SILVER': 
+                    tiers[1][str(player['championId'])]['pick'] += 1
+                elif tDict[playerID][1] == 'GOLD': 
+                    tiers[2][str(player['championId'])]['pick'] += 1
+                elif tDict[playerID][1] == 'PLATINUM': 
+                    tiers[3][str(player['championId'])]['pick'] += 1
+                elif tDict[playerID][1] == 'DIAMOND': 
+                    tiers[4][str(player['championId'])]['pick'] += 1
+                elif tDict[playerID][1] == 'MASTER': 
+                    tiers[5][str(player['championId'])]['pick'] += 1
+                elif tDict[playerID][1] == 'CHALLENGER': 
+                    tiers[6][str(player['championId'])]['pick'] += 1
 
 
     #except:
@@ -127,3 +129,4 @@ def parse():
 
 
 parse()
+
