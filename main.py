@@ -4,8 +4,6 @@ import time
 from pprint import pprint
 import copy
 
-API_KEY = "637897ec-2820-4790-bf2c-984f1e0bf98f"
-
 def getGameIds(patch):
     with open('AP_ITEM_DATASET/' + patch + '/RANKED_SOLO/EUW.json') as data_file:    
         data = json.load(data_file)
