@@ -96,7 +96,7 @@ input {
     *overflow: hidden;
 }
 
-.btn {
+/*.btn {
     margin: 7px 0;
     width: 100%;
     line-height: 50px;
@@ -111,13 +111,13 @@ input {
     overflow: hidden;
     color: #FFF;
     text-transform: uppercase;
-}
+}*/
 
-.btn:hover {
+/*.btn:hover {
     background-color: #43942F;
     color: #FFF;
 }
-
+*/
 h4 {
     font-size: 15px;
 }

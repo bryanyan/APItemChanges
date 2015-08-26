@@ -107,7 +107,7 @@ function addChampion(id) {
         return null;
     }
     $('#champList' + id).append(
-        $('<button class="btn btn-default" onclick="$(this).remove()">').html(name)
+        $('<button class="btn btn-danger btn-lg" onclick="$(this).remove()">').html(name)
     );
     document.getElementById('inputarea' + id).value = "";
 }
