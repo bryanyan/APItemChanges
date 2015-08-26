@@ -24,7 +24,7 @@ var count = 1;
 
 function createPanel() {
     $('.hero').append(
-        $('<div class="col-md-5 col-md-offset-1">').append(
+        $('<div class="col-md-10 col-md-offset-1">').append(
             $('<div class="panel panel-info" id="options' + count + '">').append(
                 $('<div class="panel-heading">').append(
                     $('<button type="button" class="close" data-target="#options' + count + '" data-dismiss="alert">').append(
@@ -60,7 +60,7 @@ function createPanel() {
                             )
                         ),
                         $('<div class="col-md-4">').append(
-                            $('<button class="btn btn-success" onclick="lineGraph("#graph' + count + ' svg", getChampData(inputarea' + count + '.value));">').html('Update Info')
+                            $('<button class="btn btn-success" onclick="lineGraph("#graph' + count + ' svg", getChampData(inputarea' + count + '.value));">').html('Generate data')
                         )
                     ),
                     $('<div class="row">').append(
@@ -73,12 +73,15 @@ function createPanel() {
                 ),
                 $('<div class="panel-footer">').append(
                     $('<div class="container">').append(
-                        $('<div class="col-md-6">').append(
+                        $('<div class="col-md-6" id="champList' + count + '">').append(
+
+                        ),
+                        $('<div class="col-md-3">').append(
                             $('<input class="inputarea" id="inputarea' + count + '" type="text" size="70" style="color:#000000;" onkeyup="showResult(this.value, ' + count + ')">'),
                             $('<div id="livesearch' + count + '">')
                         ),
-                        $('<div class="col-md-6">').append(
-                            $('<button class="btn btn-default">').html("Add Champ")
+                        $('<div class="col-md-3">').append(
+                            $('<button class="btn btn-default" onclick="addChampion(' + count + ')">').html("Add Champ")
                         )
                     )
                 )
@@ -86,6 +89,27 @@ function createPanel() {
         )
     );
     count += 1;
+}
+
+function addChampion(id) {
+    if ($('#champList' + id).children().length > 2) {
+        alert("too many champs!");
+        return null;
+    }
+    var name = document.getElementById('inputarea' + id).value;
+    var champs = [];
+    $('#champList' + id).children().each(function() {
+        champs.push(this.innerHTML);
+    });
+    console.log(champs);
+    if ($.inArray(name, champs) > -1) {
+        alert("already got this one");
+        return null;
+    }
+    $('#champList' + id).append(
+        $('<button class="btn btn-default" onclick="$(this).remove()">').html(name)
+    );
+    document.getElementById('inputarea' + id).value = "";
 }
 
 function selectRecommendation(html, id) {
