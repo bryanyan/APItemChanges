@@ -97,22 +97,87 @@ def parse():
     for player in data['participants']:
         for playerID in tDict:
             if player['participantId'] == tDict[playerID][0]:
+                value = str(player['championId'])
                 if tDict[playerID][1] == 'BRONZE':
-                    tiers[0][str(player['championId'])]['pick'] += 1
+                    tiers[0][value]['pick'] += 1
+                    tiers[0][value]['assists'] += player['stats']['assists']
+                    tiers[0][value]['kills'] += player['stats']['kills']
+                    tiers[0][value]['deaths'] += player['stats']['deaths']
+                    tiers[0][value]['totalDamageDealtToChampions'] += player['stats']['totalDamageDealtToChampions']
+                    tiers[0][value]['magicDamageDealtToChampions'] += player['stats']['magicDamageDealtToChampions']
+                    tiers[0][value]['goldEarned'] += player['stats']['goldEarned']
+                    tiers[0][value]['neutralMinionsKilled'] += player['stats']['neutralMinionsKilled']
+                    if player['stats']['winner'] == 'True':
+                        tiers[0][value]['wins'] += 1
                 elif tDict[playerID][1] == 'SILVER': 
-                    tiers[1][str(player['championId'])]['pick'] += 1
+                    tiers[1][value]['pick'] += 1
+                    tiers[1][value]['assists'] += player['stats']['assists']
+                    tiers[1][value]['kills'] += player['stats']['kills']
+                    tiers[1][value]['deaths'] += player['stats']['deaths']
+                    tiers[1][value]['totalDamageDealtToChampions'] += player['stats']['totalDamageDealtToChampions']
+                    tiers[1][value]['magicDamageDealtToChampions'] += player['stats']['magicDamageDealtToChampions']
+                    tiers[1][value]['goldEarned'] += player['stats']['goldEarned']
+                    tiers[1][value]['neutralMinionsKilled'] += player['stats']['neutralMinionsKilled']
+                    if player['stats']['winner'] == 'True':
+                        tiers[1][value]['wins'] += 1
                 elif tDict[playerID][1] == 'GOLD': 
-                    tiers[2][str(player['championId'])]['pick'] += 1
+                    tiers[2][value]['pick'] += 1
+                    tiers[2][value]['assists'] += player['stats']['assists']
+                    tiers[2][value]['kills'] += player['stats']['kills']
+                    tiers[2][value]['deaths'] += player['stats']['deaths']
+                    tiers[2][value]['totalDamageDealtToChampions'] += player['stats']['totalDamageDealtToChampions']
+                    tiers[2][value]['magicDamageDealtToChampions'] += player['stats']['magicDamageDealtToChampions']
+                    tiers[2][value]['goldEarned'] += player['stats']['goldEarned']
+                    tiers[2][value]['neutralMinionsKilled'] += player['stats']['neutralMinionsKilled']
+                    if player['stats']['winner'] == 'True':
+                        tiers[2][value]['wins'] += 1
                 elif tDict[playerID][1] == 'PLATINUM': 
-                    tiers[3][str(player['championId'])]['pick'] += 1
+                    tiers[3][value]['pick'] += 1
+                    tiers[3][value]['assists'] += player['stats']['assists']
+                    tiers[3][value]['kills'] += player['stats']['kills']
+                    tiers[3][value]['deaths'] += player['stats']['deaths']
+                    tiers[3][value]['totalDamageDealtToChampions'] += player['stats']['totalDamageDealtToChampions']
+                    tiers[3][value]['magicDamageDealtToChampions'] += player['stats']['magicDamageDealtToChampions']
+                    tiers[3][value]['goldEarned'] += player['stats']['goldEarned']
+                    tiers[3][value]['neutralMinionsKilled'] += player['stats']['neutralMinionsKilled']
+                    if player['stats']['winner'] == 'True':
+                        tiers[3][value]['wins'] += 1
                 elif tDict[playerID][1] == 'DIAMOND': 
-                    tiers[4][str(player['championId'])]['pick'] += 1
+                    tiers[4][value]['pick'] += 1
+                    tiers[4][value]['assists'] += player['stats']['assists']
+                    tiers[4][value]['kills'] += player['stats']['kills']
+                    tiers[4][value]['deaths'] += player['stats']['deaths']
+                    tiers[4][value]['totalDamageDealtToChampions'] += player['stats']['totalDamageDealtToChampions']
+                    tiers[4][value]['magicDamageDealtToChampions'] += player['stats']['magicDamageDealtToChampions']
+                    tiers[4][value]['goldEarned'] += player['stats']['goldEarned']
+                    tiers[4][value]['neutralMinionsKilled'] += player['stats']['neutralMinionsKilled']
+                    if player['stats']['winner'] == 'True':
+                        tiers[4][value]['wins'] += 1
                 elif tDict[playerID][1] == 'MASTER': 
-                    tiers[5][str(player['championId'])]['pick'] += 1
+                    tiers[5][value]['pick'] += 1
+                    tiers[5][value]['assists'] += player['stats']['assists']
+                    tiers[5][value]['kills'] += player['stats']['kills']
+                    tiers[5][value]['deaths'] += player['stats']['deaths']
+                    tiers[5][value]['totalDamageDealtToChampions'] += player['stats']['totalDamageDealtToChampions']
+                    tiers[5][value]['magicDamageDealtToChampions'] += player['stats']['magicDamageDealtToChampions']
+                    tiers[5][value]['goldEarned'] += player['stats']['goldEarned']
+                    tiers[5][value]['neutralMinionsKilled'] += player['stats']['neutralMinionsKilled']
+                    if player['stats']['winner'] == 'True':
+                        tiers[5][value]['wins'] += 1
                 elif tDict[playerID][1] == 'CHALLENGER': 
-                    tiers[6][str(player['championId'])]['pick'] += 1
+                    tiers[6][value]['pick'] += 1
+                    tiers[6][value]['assists'] += player['stats']['assists']
+                    tiers[6][value]['kills'] += player['stats']['kills']
+                    tiers[6][value]['deaths'] += player['stats']['deaths']
+                    tiers[6][value]['totalDamageDealtToChampions'] += player['stats']['totalDamageDealtToChampions']
+                    tiers[6][value]['magicDamageDealtToChampions'] += player['stats']['magicDamageDealtToChampions']
+                    tiers[6][value]['goldEarned'] += player['stats']['goldEarned']
+                    tiers[6][value]['neutralMinionsKilled'] += player['stats']['neutralMinionsKilled']
+                    if player['stats']['winner'] == 'True':
+                        tiers[6][value]['wins'] += 1
 
 
+    pprint (tiers)
     #except:
         #continue
 
