@@ -4,6 +4,7 @@ import time
 from pprint import pprint
 import copy
 
+API_KEY = "637897ec-2820-4790-bf2c-984f1e0bf98f"
 
 def getGameIds(patch):
     with open('AP_ITEM_DATASET/' + patch + '/RANKED_SOLO/EUW.json') as data_file:    
@@ -75,8 +76,13 @@ def parse():
 #fix efficiency
 #########################################
 
+    league_api = 0
+
     while (i <= 10001):
         try:
+            if league_api == 2800:
+                league_api = 0
+                time.sleep(10)
             with open('FULL_GAMES_JSON/5.11/NA/gameNumber%d.json' %(i)) as data_file:
                 data = json.load(data_file)
             requestString = ""
@@ -87,6 +93,7 @@ def parse():
                 requestString += ","
             requestString = requestString[:-1]
             league = getLeagueInfo(requestString)
+            league_api += 1
             for key in league.keys():
                 medal = league[key][0]['tier']
                 for identity in tDict:
