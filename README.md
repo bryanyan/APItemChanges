@@ -1,3 +1,3 @@
 # APItemChanges
 
-#https://riotapitems.herokuapp.com/
+https://riotapitems.herokuapp.com/
