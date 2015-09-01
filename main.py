@@ -4,8 +4,6 @@ import time
 from pprint import pprint
 import copy
 
-API_KEY = "637897ec-2820-4790-bf2c-984f1e0bf98f"
-
 def getGameIds(patch):
     with open('AP_ITEM_DATASET/' + patch + '/RANKED_SOLO/EUW.json') as data_file:    
         data = json.load(data_file)
@@ -13,13 +11,13 @@ def getGameIds(patch):
     return data
 
 def getGameInfo(id):
-    api = RiotAPI(API_KEY, "euw")
+    api = RiotAPI(API_KEY, "br")
     response = api.getMatch("match", id)
     #pprint(response)
     return response
 
 def getLeagueInfo(id):
-    api = RiotAPI(API_KEY, "na")
+    api = RiotAPI(API_KEY, "ru")
     response = api.getLeague("league", id)
     return response
 
@@ -79,11 +77,12 @@ def parse():
     league_api = 0
 
     while (i <= 10001):
+        print i
         try:
             if league_api == 2800:
                 league_api = 0
                 time.sleep(10)
-            with open('FULL_GAMES_JSON/5.11/NA/gameNumber%d.json' %(i)) as data_file:
+            with open('FULL_GAMES_JSON/5.11/RU/RUgameNumber%d.json' %(i)) as data_file:
                 data = json.load(data_file)
             requestString = ""
             tDict = {}
@@ -152,7 +151,7 @@ def parse():
                             tiers[2][value]['duration'] += data['matchDuration']
                             if player['stats']['winner'] == True:
                                 tiers[2][value]['wins'] += 1
-                        elif tDict[playerID][1] == 'PLATINUM': 
+                        elif tDict[playerID][1] == 'PLATINUM':
                             tiers[3][value]['pick'] += 1
                             tiers[3][value]['assists'] += player['stats']['assists']
                             tiers[3][value]['kills'] += player['stats']['kills']
@@ -216,28 +215,28 @@ def parse():
             i += 1
 
     for champkey in champions:
-        with io.open('5.11NA%sOVERALL.json' %(champions[champkey]['name']), 'w', encoding='utf-8') as fout:
+        with io.open('5.11-RU-%s-OVERALL.json' %(champions[champkey]['name']), 'w', encoding='utf-8') as fout:
             fout.write(unicode(json.dumps(tiers[7][str(champions[champkey]['key'])], ensure_ascii=False)))
 
-        with io.open('5.11NA%sBRONZE.json' %(champions[champkey]['name']), 'w', encoding='utf-8') as fout:
+        with io.open('5.11-RU-%s-BRONZE.json' %(champions[champkey]['name']), 'w', encoding='utf-8') as fout:
             fout.write(unicode(json.dumps(tiers[0][str(champions[champkey]['key'])], ensure_ascii=False)))
 
-        with io.open('5.11NA%sSILVER.json' %(champions[champkey]['name']), 'w', encoding='utf-8') as fout:
+        with io.open('5.11-RU-%s-SILVER.json' %(champions[champkey]['name']), 'w', encoding='utf-8') as fout:
             fout.write(unicode(json.dumps(tiers[1][str(champions[champkey]['key'])], ensure_ascii=False)))
 
-        with io.open('5.11NA%sGOLD.json' %(champions[champkey]['name']), 'w', encoding='utf-8') as fout:
+        with io.open('5.11-RU-%s-GOLD.json' %(champions[champkey]['name']), 'w', encoding='utf-8') as fout:
             fout.write(unicode(json.dumps(tiers[2][str(champions[champkey]['key'])], ensure_ascii=False)))
 
-        with io.open('5.11NA%sPLATINUM.json' %(champions[champkey]['name']), 'w', encoding='utf-8') as fout:
+        with io.open('5.11-RU-%s-PLATINUM.json' %(champions[champkey]['name']), 'w', encoding='utf-8') as fout:
             fout.write(unicode(json.dumps(tiers[3][str(champions[champkey]['key'])], ensure_ascii=False)))
 
-        with io.open('5.11NA%sDIAMOND.json' %(champions[champkey]['name']), 'w', encoding='utf-8') as fout:
+        with io.open('5.11-RU-%s-DIAMOND.json' %(champions[champkey]['name']), 'w', encoding='utf-8') as fout:
             fout.write(unicode(json.dumps(tiers[4][str(champions[champkey]['key'])], ensure_ascii=False)))
 
-        with io.open('5.11NA%sMASTER.json' %(champions[champkey]['name']), 'w', encoding='utf-8') as fout:
+        with io.open('5.11-RU-%s-MASTER.json' %(champions[champkey]['name']), 'w', encoding='utf-8') as fout:
             fout.write(unicode(json.dumps(tiers[5][str(champions[champkey]['key'])], ensure_ascii=False)))
 
-        with io.open('5.11NA%sCHALLENGER.json' %(champions[champkey]['name']), 'w', encoding='utf-8') as fout:
+        with io.open('5.11-RU-%s-CHALLENGER.json' %(champions[champkey]['name']), 'w', encoding='utf-8') as fout:
             fout.write(unicode(json.dumps(tiers[6][str(champions[champkey]['key'])], ensure_ascii=False)))
 
 #if __name__ == "__main__":
