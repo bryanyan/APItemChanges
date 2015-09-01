@@ -16,7 +16,7 @@
         <link rel="stylesheet" href="views/js/nvd3/nv.d3.css">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.2/d3.min.js" charset="utf-8"> </script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.0/js/materialize.min.js"> </script>
-        <script src="views/js/nvd3/nv.d3.min.js"></script>
+        <script src="views/js/nvd3/nv.d3.min.js"> </script>
     </head>
 
     <body>
