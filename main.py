@@ -11,21 +11,15 @@ def getGameIds(patch):
     return data
 
 def getGameInfo(id):
-<<<<<<< Updated upstream
+
     api = RiotAPI(API_KEY, "br")
-=======
-    api = RiotAPI(API_KEY, "tr")
->>>>>>> Stashed changes
     response = api.getMatch("match", id)
     #pprint(response)
     return response
 
 def getLeagueInfo(id):
-<<<<<<< Updated upstream
+
     api = RiotAPI(API_KEY, "ru")
-=======
-    api = RiotAPI(API_KEY, "tr")
->>>>>>> Stashed changes
     response = api.getLeague("league", id)
     return response
 
@@ -81,25 +75,16 @@ def parse():
 #########################################
 #fix efficiency
 #########################################
-<<<<<<< Updated upstream
 
     league_api = 0
 
     while (i <= 10001):
-<<<<<<< Updated upstream
-        print i
-=======
-        print(i)
->>>>>>> Stashed changes
+
         try:
             if league_api == 2800:
                 league_api = 0
                 time.sleep(10)
-<<<<<<< Updated upstream
             with open('FULL_GAMES_JSON/5.11/RU/RUgameNumber%d.json' %(i)) as data_file:
-=======
-            with open('FULL_GAMES_JSON/5.14/TR/TRgameNumber%d.json' %(i)) as data_file:
->>>>>>> Stashed changes
                 data = json.load(data_file)
             requestString = ""
             tDict = {}
@@ -232,30 +217,6 @@ def parse():
             i += 1
 
     for champkey in champions:
-<<<<<<< Updated upstream
-        with io.open('5.11-RU-%s-OVERALL.json' %(champions[champkey]['name']), 'w', encoding='utf-8') as fout:
-            fout.write(unicode(json.dumps(tiers[7][str(champions[champkey]['key'])], ensure_ascii=False)))
-
-        with io.open('5.11-RU-%s-BRONZE.json' %(champions[champkey]['name']), 'w', encoding='utf-8') as fout:
-            fout.write(unicode(json.dumps(tiers[0][str(champions[champkey]['key'])], ensure_ascii=False)))
-
-        with io.open('5.11-RU-%s-SILVER.json' %(champions[champkey]['name']), 'w', encoding='utf-8') as fout:
-            fout.write(unicode(json.dumps(tiers[1][str(champions[champkey]['key'])], ensure_ascii=False)))
-
-        with io.open('5.11-RU-%s-GOLD.json' %(champions[champkey]['name']), 'w', encoding='utf-8') as fout:
-            fout.write(unicode(json.dumps(tiers[2][str(champions[champkey]['key'])], ensure_ascii=False)))
-
-        with io.open('5.11-RU-%s-PLATINUM.json' %(champions[champkey]['name']), 'w', encoding='utf-8') as fout:
-            fout.write(unicode(json.dumps(tiers[3][str(champions[champkey]['key'])], ensure_ascii=False)))
-
-        with io.open('5.11-RU-%s-DIAMOND.json' %(champions[champkey]['name']), 'w', encoding='utf-8') as fout:
-            fout.write(unicode(json.dumps(tiers[4][str(champions[champkey]['key'])], ensure_ascii=False)))
-
-        with io.open('5.11-RU-%s-MASTER.json' %(champions[champkey]['name']), 'w', encoding='utf-8') as fout:
-            fout.write(unicode(json.dumps(tiers[5][str(champions[champkey]['key'])], ensure_ascii=False)))
-
-        with io.open('5.11-RU-%s-CHALLENGER.json' %(champions[champkey]['name']), 'w', encoding='utf-8') as fout:
-=======
         with io.open('5.14-TR-%s-OVERALL.json' %(champions[champkey]['name']), 'w', encoding='utf-8') as fout:
             fout.write(unicode(json.dumps(tiers[7][str(champions[champkey]['key'])], ensure_ascii=False)))
 
@@ -278,55 +239,9 @@ def parse():
             fout.write(unicode(json.dumps(tiers[5][str(champions[champkey]['key'])], ensure_ascii=False)))
 
         with io.open('5.14-TR-%s-CHALLENGER.json' %(champions[champkey]['name']), 'w', encoding='utf-8') as fout:
->>>>>>> Stashed changes
             fout.write(unicode(json.dumps(tiers[6][str(champions[champkey]['key'])], ensure_ascii=False)))
 
-=======
 
-    #while (i < 10002):
-    #try:
-    with open('FULL_GAMES_JSON/5.11/NA/gameNumber%d.json' %(i)) as data_file:
-        data = json.load(data_file)
-    requestString = ""
-    tDict = {}
-    for participant in data['participantIdentities']:
-        requestString += str(participant['player']['summonerId'])
-        tDict[str(participant['player']['summonerId'])] = [participant['participantId'], None] 
-        requestString += ","
-    requestString = requestString[:-1]
-    league = getLeagueInfo(requestString)
-    for key in league.keys():
-        medal = league[key][0]['tier']
-        for identity in tDict:
-            if key == identity:
-                tDict[identity][1] = medal
-    
-    for player in data['participants']:
-        for playerID in tDict:
-            if player['participantId'] == tDict[playerID][0]:
-                if tDict[playerID][1] == 'BRONZE':
-                    tiers[0][str(player['championId'])]['pick'] += 1
-                if tDict[playerID][1] == 'SILVER': 
-                    tiers[1]
-                if tDict[playerID][1] == 'GOLD': 
-                    tiers[2]
-                if tDict[playerID][1] == 'PLATINUM': 
-                    tiers[3]
-                if tDict[playerID][1] == 'DIAMOND': 
-                    tiers[4]
-                if tDict[playerID][1] == 'MASTER': 
-                    tiers[5]
-                if tDict[playerID][1] == 'CHALLENGER': 
-                    tiers[6]
-
-
-    #except:
-        #continue
-
-    #with io.open('NAdata.json', 'w', encoding='utf-8') as fout:
-        #fout.write(unicode(json.dumps(NAdata, ensure_ascii=False)))
-
->>>>>>> Stashed changes
 #if __name__ == "__main__":
     #main()
 
@@ -335,8 +250,4 @@ def parse():
     #with io.open('gameNumber3.json', 'w', encoding='utf-8') as fout:
         #fout.write(unicode(json.dumps(data, ensure_ascii=False)))
 
-<<<<<<< Updated upstream
-=======
-
->>>>>>> Stashed changes
 parse()
