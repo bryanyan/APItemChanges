@@ -23,12 +23,6 @@
         <div class="background">
             <div class="hero">
                 <div class="container">
-                    <nav class="row">
-                        <div class="col-md-12">
-                            <a href="#" class="link">Home</a>
-                            <a href="#" class="link" id="about">About</a>
-                        </div>
-                    </nav>
                     <div class="row">
                         <div class="col-md-10"> 
                             <h1>API-tems</h1>
@@ -48,7 +42,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
-                        <h3> Created by <a id="bryan"> Bryan Yan </a> and <a id="warren"> Warren Tian </a> </h3>
+                        <h3> Created by <a id="bryan" href="https://github.com/bryanyan"> Bryan Yan </a> and <a id="warren" href="https://github.com/warrent888"> Warren Tian </a> </h3>
                     </div>
                     <div class="col-md-12">
                         <h4>API-tems isn’t endorsed by Riot Games and doesn’t reflect the views or opinions of Riot Games or anyone officially involved in producing or managing League of Legends. League of Legends and Riot Games are trademarks or registered trademarks of Riot Games, Inc. League of Legends © Riot Games, Inc. </h4>
