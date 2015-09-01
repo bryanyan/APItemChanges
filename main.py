@@ -11,18 +11,20 @@ def getGameIds(patch):
     return data
 
 def getGameInfo(id):
+
     api = RiotAPI(API_KEY, "br")
     response = api.getMatch("match", id)
     #pprint(response)
     return response
 
 def getLeagueInfo(id):
+
     api = RiotAPI(API_KEY, "ru")
     response = api.getLeague("league", id)
     return response
 
 def main():
-    patches = ['5.11', '5.14']
+    patches = ['5.14', '5.14']
     count = 0
     gameID = [getGameIds(patches[1])]
     
@@ -77,7 +79,7 @@ def parse():
     league_api = 0
 
     while (i <= 10001):
-        print i
+
         try:
             if league_api == 2800:
                 league_api = 0
@@ -215,35 +217,36 @@ def parse():
             i += 1
 
     for champkey in champions:
-        with io.open('5.11-RU-%s-OVERALL.json' %(champions[champkey]['name']), 'w', encoding='utf-8') as fout:
+        with io.open('5.14-TR-%s-OVERALL.json' %(champions[champkey]['name']), 'w', encoding='utf-8') as fout:
             fout.write(unicode(json.dumps(tiers[7][str(champions[champkey]['key'])], ensure_ascii=False)))
 
-        with io.open('5.11-RU-%s-BRONZE.json' %(champions[champkey]['name']), 'w', encoding='utf-8') as fout:
+        with io.open('5.14-TR-%s-BRONZE.json' %(champions[champkey]['name']), 'w', encoding='utf-8') as fout:
             fout.write(unicode(json.dumps(tiers[0][str(champions[champkey]['key'])], ensure_ascii=False)))
 
-        with io.open('5.11-RU-%s-SILVER.json' %(champions[champkey]['name']), 'w', encoding='utf-8') as fout:
+        with io.open('5.14-TR-%s-SILVER.json' %(champions[champkey]['name']), 'w', encoding='utf-8') as fout:
             fout.write(unicode(json.dumps(tiers[1][str(champions[champkey]['key'])], ensure_ascii=False)))
 
-        with io.open('5.11-RU-%s-GOLD.json' %(champions[champkey]['name']), 'w', encoding='utf-8') as fout:
+        with io.open('5.14-TR-%s-GOLD.json' %(champions[champkey]['name']), 'w', encoding='utf-8') as fout:
             fout.write(unicode(json.dumps(tiers[2][str(champions[champkey]['key'])], ensure_ascii=False)))
 
-        with io.open('5.11-RU-%s-PLATINUM.json' %(champions[champkey]['name']), 'w', encoding='utf-8') as fout:
+        with io.open('5.14-TR-%s-PLATINUM.json' %(champions[champkey]['name']), 'w', encoding='utf-8') as fout:
             fout.write(unicode(json.dumps(tiers[3][str(champions[champkey]['key'])], ensure_ascii=False)))
 
-        with io.open('5.11-RU-%s-DIAMOND.json' %(champions[champkey]['name']), 'w', encoding='utf-8') as fout:
+        with io.open('5.14-TR-%s-DIAMOND.json' %(champions[champkey]['name']), 'w', encoding='utf-8') as fout:
             fout.write(unicode(json.dumps(tiers[4][str(champions[champkey]['key'])], ensure_ascii=False)))
 
-        with io.open('5.11-RU-%s-MASTER.json' %(champions[champkey]['name']), 'w', encoding='utf-8') as fout:
+        with io.open('5.14-TR-%s-MASTER.json' %(champions[champkey]['name']), 'w', encoding='utf-8') as fout:
             fout.write(unicode(json.dumps(tiers[5][str(champions[champkey]['key'])], ensure_ascii=False)))
 
-        with io.open('5.11-RU-%s-CHALLENGER.json' %(champions[champkey]['name']), 'w', encoding='utf-8') as fout:
+        with io.open('5.14-TR-%s-CHALLENGER.json' %(champions[champkey]['name']), 'w', encoding='utf-8') as fout:
             fout.write(unicode(json.dumps(tiers[6][str(champions[champkey]['key'])], ensure_ascii=False)))
+
 
 #if __name__ == "__main__":
     #main()
 
 #def hardcode():
-    #data = getGameInfo(getGameIds('5.11')[2])
+    #data = getGameInfo(getGameIds('5.14')[2])
     #with io.open('gameNumber3.json', 'w', encoding='utf-8') as fout:
         #fout.write(unicode(json.dumps(data, ensure_ascii=False)))
 

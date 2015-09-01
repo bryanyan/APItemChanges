@@ -55,22 +55,10 @@ nav {
 
 .hero {
     padding-top: 40px;
+    background: url(http://ddragon.leagueoflegends.com/cdn/img/champion/splash/Aatrox_0.jpg);
     overflow: hidden;
     min-height: 80vh;
     color: white;
-}
-
-.hero::after {
-  content: "";
-  background: url(http://ddragon.leagueoflegends.com/cdn/img/champion/splash/Aatrox_0.jpg);
-  background-size: cover;
-  opacity: 0.75;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  position: absolute;
-  z-index: -1;   
 }
 
 .form-control {

@@ -24,7 +24,7 @@ var count = 1;
 
 function createPanel() {
     $('.hero').append(
-        $('<div class="col-md-10 col-md-offset-1">').append(
+        $('<div class="col-md-12">').append(
             $('<div class="panel panel-info" id="options' + count + '">').append(
                 $('<div class="panel-heading">').append(
                     $('<button type="button" class="close" data-target="#options' + count + '" data-dismiss="alert">').append(
@@ -36,13 +36,14 @@ function createPanel() {
                     $('<div class="row">').append(
                         $('<div class="col-md-4">').append(
                             $('<select class="form-control" id="tier' + count + '">').append(
-                                $('<option value="bronze">').html('Bronze'),
-                                $('<option value="bronze">').html('Silver'),
-                                $('<option value="bronze">').html('Gold'),
-                                $('<option value="bronze">').html('Platinum'),
-                                $('<option value="bronze">').html('Diamond'),
-                                $('<option value="bronze">').html('Master'),
-                                $('<option value="bronze">').html('Challenger')
+                                $('<option value="OVERALL">').html('Overall'),
+                                $('<option value="BRONZE">').html('Bronze'),
+                                $('<option value="SILVER">').html('Silver'),
+                                $('<option value="GOLD">').html('Gold'),
+                                $('<option value="PLATINUM">').html('Platinum'),
+                                $('<option value="DIAMOND">').html('Diamond'),
+                                $('<option value="MASTER">').html('Master'),
+                                $('<option value="CHALLENGER">').html('Challenger')
                             )
                         ),
                         $('<div class="col-md-4">').append(
@@ -60,13 +61,50 @@ function createPanel() {
                             )
                         ),
                         $('<div class="col-md-4">').append(
-                            $('<button class="btn btn-success" onclick="lineGraph("#graph' + count + ' svg", getChampData(inputarea' + count + '.value));">').html('Generate data')
+                            $('<button class="btn btn-success" onclick="drawGraphs(' + count + ');">').html('Generate data')
                         )
                     ),
                     $('<div class="row">').append(
-                        $('<div class="col-md-12">').append(
-                            $('<div id="graph' + count + '">').append(
-                                $('<svg>')
+                        $('<div class="col-md-3">').append(
+                            $('<div id="winRatio0' + count + '" style="height:200px;">').append(
+                                ('<svg></svg>')
+                            )
+                        ),
+                        $('<div class="col-md-3">').append(
+                            $('<div id="popularity0' + count + '" style="height:200px;">').append(
+                                ('<svg></svg>')
+                            )
+                        ),
+                        $('<div class="col-md-3">').append(
+                            $('<div id="winRatio1' + count + '" style="height:200px;">').append(
+                                ('<svg></svg>')
+                            )
+                        ),
+                        $('<div class="col-md-3">').append(
+                            $('<div id="popularity1' + count + '" style="height:200px;">').append(
+                                ('<svg></svg>')
+                            )
+                        )
+                    ),
+                    $('<div class="row">').append(
+                        $('<div class="col-md-3">').append(
+                            $('<div id="dmg0' + count + '" style="height:200px;">').append(
+                                ('<svg></svg>')
+                            )
+                        ),
+                        $('<div class="col-md-3">').append(
+                            $('<div id="kda0' + count + '" style="height:200px;">').append(
+                                ('<svg></svg>')
+                            )
+                        ),
+                        $('<div class="col-md-3">').append(
+                            $('<div id="dmg1' + count + '" style="height:200px;">').append(
+                                ('<svg></svg>')
+                            )
+                        ),
+                        $('<div class="col-md-3">').append(
+                            $('<div id="kda1' + count + '" style="height:200px;">').append(
+                                ('<svg></svg>')
                             )
                         )
                     )
@@ -92,7 +130,7 @@ function createPanel() {
 }
 
 function addChampion(id) {
-    if ($('#champList' + id).children().length > 2) {
+    if ($('#champList' + id).children().length > 4) {
         alert("too many champs!");
         return null;
     }
@@ -101,9 +139,8 @@ function addChampion(id) {
     $('#champList' + id).children().each(function() {
         champs.push(this.innerHTML);
     });
-    console.log(champs);
     if ($.inArray(name, champs) > -1) {
-        alert("already got this one");
+        alert("Champion already exists.");
         return null;
     }
     $('#champList' + id).append(
@@ -118,35 +155,119 @@ function selectRecommendation(html, id) {
     $('#' + search).empty();
 }
 
-function lineGraph(id, data) {
+function drawGraphs(id) {
+    var champs = [];
+    // var patch = document.getElementById("patch" + id).value;
+    var region = document.getElementById("region" + id).value;
+    var tier = document.getElementById("tier" + id).value;
+    $('#champList' + id).children().each(function() {
+        champs.push(this.innerHTML);
+    });
+    if (champs.length == 0) {
+        alert("No champions selected!");
+        return null;
+    }
+    var data0 = [];
+    var data1 = [];
+    for (var i=0; i < champs.length; i++) {
+        var url = "../data/5.11/" + region + "/5.11-" + region + "-" + champs[i] + "-" + tier + ".json";
+        $.get( url, function(champInfo) {
+            data0.push(champInfo);
+        });
+        var url = "../data/5.14/" + region + "/5.14-" + region + "-" + champs[i] + "-" + tier + ".json";
+        $.get( url, function(champInfo) {
+            data1.push(champInfo);
+        });
+    }
+    var data = [data0, data1];
+    $(document).ajaxStop(function () {
+        console.log(data);
+        var kda11 = [];
+        var dmg11 = [];
+        var popularity11 = [];
+        var winRatio11 = [];
+        var patches = ["5.11", "5.14"];
+        for (var j=0;j<patches.length;j++) {
+            var allkda = [];
+            var alldmg = [];
+            var allpopularity = [];
+            var allWinRatio = [];
+            for(i=0;i<data[j].length;i++) {
+                var picked = data[j][i]["pick"];
+                var kills = data[j][i]["kills"];
+                var deaths = data[j][i]["deaths"];
+                var assists = data[j][i]["assists"];
+                var totalDamage = data[j][i]["totalDamageDealtToChampions"];
+                var magicDamage = data[j][i]["magicDamageDealtToChampions"];
+                var goldEarned = data[j][i]["goldEarned"];
+                var bans = data[j][i]["bans"];
+                var wins = data[j][i]["wins"];
+                var duration = data[j][i]["duration"];
+                var dmg = 
+                {"key":data[j][i]["name"] + patches[j], "values":[
+                    {"x":"TotalDmg", "y":totalDamage/picked}, 
+                    {"x":"MagicDmg", "y":magicDamage/picked}
+                    ]
+                };
+                var kda = 
+                {"key":data[j][i]["name"] + patches[j], "values":[
+                    {"x":"Kills", "y":kills/picked}, 
+                    {"x":"Deaths", "y":deaths/picked}, 
+                    {"x":"Assists", "y":assists/picked},
+                    {"x":"Overall", "y":(kills+assists)/picked}
+                    ]
+                };
+                var popularity = 
+                {"key":data[j][i]["name"] + patches[j], "values":[
+                    {"x":"Picked", "y":picked}, 
+                    {"x":"Banned", "y":bans},
+                    {"x":"Duration", "y":duration/picked}
+                    ]
+                };
+                var winRatio = 
+                {"key":data[j][i]["name"] + patches[j], "values":[
+                    {"x":"WinRate", "y":wins/picked * 100},
+                    {"x":"PickRate", "y":picked/10000 * 100},
+                    {"x":"BanRate", "y":bans/picked * 100}
+                    ]
+                };
+                allkda.push(kda);
+                alldmg.push(dmg);
+                allpopularity.push(popularity);
+                allWinRatio.push(winRatio);
+            }
+            kda11.push(allkda);
+            dmg11.push(alldmg);
+            popularity11.push(allpopularity);
+            winRatio11.push(allWinRatio);
+        }
+        barGraph("#kda0" + id + " svg", kda11[0]);
+        barGraph("#dmg0" + id + " svg", dmg11[0]);
+        barGraph("#kda1" + id + " svg", kda11[1]);
+        barGraph("#dmg1" + id + " svg", dmg11[1]);
+        barGraph("#popularity0" + id + " svg", popularity11[0]);
+        barGraph("#popularity1" + id + " svg", popularity11[1]);
+        barGraph("#winRatio0" + id + " svg", winRatio11[0]);
+        barGraph("#winRatio1" + id + " svg", winRatio11[1]);
+    });
+}
+
+function barGraph(id, data) {
     nv.addGraph(function() {
-        chart = nv.models.lineChart()
-                .useInteractiveGuideline(true)
-                .showYAxis(true)
-                .showXAxis(true);
-        chart.xAxis
-            .axisLabel("Time")
-            .tickValues([0,1,2,3,4,5,6,7,8,9]);
-        chart.yAxis
-            .axisLabel("Distance")
-            .axisLabelDistance(40);
+        var chart = nv.models.multiBarChart()
+          .reduceXTicks(false)   //If 'false', every single x-axis tick label will be rendered.
+          .rotateLabels(0)      //Angle to rotate x-axis labels.
+          .groupSpacing(0.1)    //Distance between each group of bars.
+          .showControls(false)
+        ;
+
         d3.select(id)
             .datum(data)
             .call(chart);
-        nv.utils.windowResize(function() { 
-            chart.update();
-            //chart.height(window.innerHeight);
-        });
+
+        nv.utils.windowResize(chart.update);
+
         return chart;
     });
-};
 
-function getChampData(value) {
-    console.log(value);
-    var data = [], i;
-    for (i = 0; i < 10; i++) {
-        data.push({x:i, y:i});
-    }
-    // document.write(data);
-    return [{values: data, key: "linegraph"}];
 }
