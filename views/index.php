@@ -40,8 +40,6 @@
                 </div>
             </div>
         </div>
-
-
         <div class="container">
             <div class="col-md-3">
             </div>
