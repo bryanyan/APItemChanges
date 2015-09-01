@@ -34,7 +34,6 @@
                             <h1>API-tems</h1>
                             <h2>Pre and Post AP Item Change Statistics</h2>
                         </div>
-                        <button onclick="createPanel()">Create Panel!</button>
                         <button class="btn btn-success" onclick="createPanel()">Create Panel!</button>
                         <script>createPanel()</script>
                     </div>
