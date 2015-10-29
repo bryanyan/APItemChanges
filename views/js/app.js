@@ -66,44 +66,44 @@ function createPanel() {
                     ),
                     $('<div class="row">').append(
                         $('<div class="col-md-3">').append(
-                            $('<div id="winRatio0' + count + '" style="height:200px;">').append(
+                            $('<div id="winRatio0' + count + '" style="height:200px;border-style:solid;border-width:5px;">').append(
                                 ('<svg></svg>')
                             )
                         ),
                         $('<div class="col-md-3">').append(
-                            $('<div id="popularity0' + count + '" style="height:200px;">').append(
+                            $('<div id="popularity0' + count + '" style="height:200px;border-style:solid;border-width:5px;">').append(
                                 ('<svg></svg>')
                             )
                         ),
                         $('<div class="col-md-3">').append(
-                            $('<div id="winRatio1' + count + '" style="height:200px;">').append(
+                            $('<div id="winRatio1' + count + '" style="height:200px;border-style:solid;border-width:5px;">').append(
                                 ('<svg></svg>')
                             )
                         ),
                         $('<div class="col-md-3">').append(
-                            $('<div id="popularity1' + count + '" style="height:200px;">').append(
+                            $('<div id="popularity1' + count + '" style="height:200px;border-style:solid;border-width:5px;">').append(
                                 ('<svg></svg>')
                             )
                         )
                     ),
                     $('<div class="row">').append(
                         $('<div class="col-md-3">').append(
-                            $('<div id="dmg0' + count + '" style="height:200px;">').append(
+                            $('<div id="dmg0' + count + '" style="height:200px;border-style:solid;border-width:5px;">').append(
                                 ('<svg></svg>')
                             )
                         ),
                         $('<div class="col-md-3">').append(
-                            $('<div id="kda0' + count + '" style="height:200px;">').append(
+                            $('<div id="kda0' + count + '" style="height:200px;border-style:solid;border-width:5px;">').append(
                                 ('<svg></svg>')
                             )
                         ),
                         $('<div class="col-md-3">').append(
-                            $('<div id="dmg1' + count + '" style="height:200px;">').append(
+                            $('<div id="dmg1' + count + '" style="height:200px;border-style:solid;border-width:5px;">').append(
                                 ('<svg></svg>')
                             )
                         ),
                         $('<div class="col-md-3">').append(
-                            $('<div id="kda1' + count + '" style="height:200px;">').append(
+                            $('<div id="kda1' + count + '" style="height:200px;border-style:solid;border-width:5px;">').append(
                                 ('<svg></svg>')
                             )
                         )
@@ -245,7 +245,6 @@ function drawGraphs(id) {
             popularity11.push(allpopularity);
             winRatio11.push(allWinRatio);
         }
-        // console.log(kda11[0]);
         barGraph("#kda0" + id + " svg", kda11[0]);
         barGraph("#dmg0" + id + " svg", dmg11[0]);
         barGraph("#kda1" + id + " svg", kda11[1]);
