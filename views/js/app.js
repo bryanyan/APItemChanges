@@ -152,6 +152,7 @@ function addChampion(id) {
 function selectRecommendation(html, id) {
     var search = "livesearch" + id;
     document.getElementById('inputarea' + id).value = html.innerHTML;
+    addChampion(id);
     $('#' + search).empty();
 }
 
