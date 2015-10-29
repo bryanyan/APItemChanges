@@ -241,16 +241,39 @@ function drawGraphs(id) {
             popularity11.push(allpopularity);
             winRatio11.push(allWinRatio);
         }
+        // console.log(kda11[0]);
         barGraph("#kda0" + id + " svg", kda11[0]);
         barGraph("#dmg0" + id + " svg", dmg11[0]);
         barGraph("#kda1" + id + " svg", kda11[1]);
         barGraph("#dmg1" + id + " svg", dmg11[1]);
         barGraph("#popularity0" + id + " svg", popularity11[0]);
         barGraph("#popularity1" + id + " svg", popularity11[1]);
-        barGraph("#winRatio0" + id + " svg", winRatio11[0]);
-        barGraph("#winRatio1" + id + " svg", winRatio11[1]);
+        circleGraph("#winRatio0" + id + " svg", winRatio11[0]);
+        circleGraph("#winRatio1" + id + " svg", winRatio11[1]);
     });
 }
+
+function circleGraph(id, data) {
+    nv.addGraph(function() {
+    var chart = nv.models.pieChart()
+    .x(function(d) { return d.label })
+    .y(function(d) { return d.value })
+    .showLabels(true)     //Display pie labels
+    .labelThreshold(.05)  //Configure the minimum slice size for labels to show up
+    .labelType("percent") //Configure what type of data to show in the label. Can be "key", "value" or "percent"
+    .donut(true)          //Turn on Donut mode. Makes pie chart look tasty!
+    .donutRatio(0.35)     //Configure how big you want the donut hole size to be.
+    ;
+
+    d3.select(id)
+    .datum(data)
+    .transition().duration(350)
+    .call(chart);
+
+    return chart;
+    });
+}
+
 
 function barGraph(id, data) {
     nv.addGraph(function() {
