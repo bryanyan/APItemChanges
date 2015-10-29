@@ -136,6 +136,9 @@ function addChampion(id) {
     }
     var name = document.getElementById('inputarea' + id).value;
     var champs = [];
+    if (name == "") {
+        return null;
+    }
     $('#champList' + id).children().each(function() {
         champs.push(this.innerHTML);
     });
@@ -249,8 +252,8 @@ function drawGraphs(id) {
         barGraph("#dmg1" + id + " svg", dmg11[1]);
         barGraph("#popularity0" + id + " svg", popularity11[0]);
         barGraph("#popularity1" + id + " svg", popularity11[1]);
-        circleGraph("#winRatio0" + id + " svg", winRatio11[0]);
-        circleGraph("#winRatio1" + id + " svg", winRatio11[1]);
+        barGraph("#winRatio0" + id + " svg", winRatio11[0]);
+        barGraph("#winRatio1" + id + " svg", winRatio11[1]);
     });
 }
 
