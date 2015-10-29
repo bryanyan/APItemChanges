@@ -27,10 +27,14 @@ function createPanel() {
         $('<div class="col-md-12">').append(
             $('<div class="panel panel-success" id="options' + count + '">').append(
                 $('<div class="panel-heading">').append(
-                    $('<button type="button" class="close" data-target="#options' + count + '" data-dismiss="alert">').append(
-                        $('<span aria-hidden="true">').html("&times;")
-                    ),
-                    "Panel " + count
+                    $('<div class="container">').append(
+                        $('<div class="col-md-6" id="champList' + count + '">').append(
+                        ),
+                        $('<div class="col-md-3">').append(
+                            $('<input class="inputarea" placeholder="Champion name" id="inputarea' + count + '" type="text" size="70" style="color:#000000;" onkeyup="showResult(this.value, ' + count + ')">'),
+                            $('<div id="livesearch' + count + '">')
+                        )
+                    )
                 ),
                 $('<div class="panel-body">').append(
                     $('<div class="row">').append(
@@ -108,21 +112,9 @@ function createPanel() {
                             )
                         )
                     )
-                ),
-                $('<div class="panel-footer">').append(
-                    $('<div class="container">').append(
-                        $('<div class="col-md-6" id="champList' + count + '">').append(
-
-                        ),
-                        $('<div class="col-md-3">').append(
-                            $('<input class="inputarea" id="inputarea' + count + '" type="text" size="70" style="color:#000000;" onkeyup="showResult(this.value, ' + count + ')">'),
-                            $('<div id="livesearch' + count + '">')
-                        ),
-                        $('<div class="col-md-3">').append(
-                            $('<button class="btn btn-default" onclick="addChampion(' + count + ')">').html("Add Champ")
-                        )
-                    )
                 )
+                // $('<div class="panel-footer">').append(
+                // )
             )
         )
     );

@@ -26,8 +26,8 @@
                     <div class="row">
                         <div class="col-md-10"> 
                             <h1>API-tems</h1>
-                            <h2>Pre and Post AP Item Change Statistics</h2>
-                            <button class="btn btn-success" onclick="createPanel()">New Panel!</button>
+                            <span><h2>Pre and Post AP Item Change Statistics  <button class="btn btn-large btn-success" onclick="createPanel()">New Panel!</button></span></h2>
+                            
                         </div>
                     </div>
                 </div>
