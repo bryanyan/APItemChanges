@@ -25,7 +25,7 @@ var count = 1;
 function createPanel() {
     $('.hero').append(
         $('<div class="col-md-12">').append(
-            $('<div class="panel panel-info" id="options' + count + '">').append(
+            $('<div class="panel panel-success" id="options' + count + '">').append(
                 $('<div class="panel-heading">').append(
                     $('<button type="button" class="close" data-target="#options' + count + '" data-dismiss="alert">').append(
                         $('<span aria-hidden="true">').html("&times;")
